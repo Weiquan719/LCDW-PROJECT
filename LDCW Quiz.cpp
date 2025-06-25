@@ -9,8 +9,8 @@
 struct Question {
     std::string text;
     std::vector<std::string> options;
-    char correctAnswer; // 'a', 'b', 'c', or 'd'
-    std::string citation; // To link question to source article
+    char correctAnswer; 
+    std::string citation; 
 };
 
 // Function to validate student ID (10 digits, numeric)
@@ -18,7 +18,7 @@ bool validateStudentId(const std::string& id) {
     if (id.length() != 10) {
         return false;
     }
-    for (int i = 0; i < id.length(); i++) { // Traditional for loop instead of range-based
+    for (int i = 0; i < id.length(); i++) { 
         if (!isdigit(id[i])) {
             return false;
         }
@@ -26,15 +26,15 @@ bool validateStudentId(const std::string& id) {
     return true;
 }
 
-// Function to convert character to lowercase without using C++11
+
 char toLower(char c) {
     if (c >= 'A' && c <= 'Z') {
-        return c + 32;  // Convert uppercase to lowercase by ASCII value
+        return c + 32;  
     }
     return c;
 }
 
-// Function to ask a question and get user answer
+
 char askQuestion(const std::string& question, const std::vector<std::string>& options, char correctAnswer) {
     char answer;
     std::cout << question << std::endl;
@@ -47,9 +47,9 @@ char askQuestion(const std::string& question, const std::vector<std::string>& op
     while (!validInput) {
         std::cout << "Your answer (a, b, c, or d): ";
         std::cin >> answer;
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Clear buffer
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
 
-        answer = toLower(answer); // Convert to lowercase manually
+        answer = toLower(answer); 
 
         if (answer >= 'a' && answer < 'a' + options.size()) {
             validInput = true;
