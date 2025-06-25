@@ -225,13 +225,13 @@ int main() {
     q10.correctAnswer = 'c';
     questions.push_back(q10);
 
-    // Start the quiz
+    
     for (int i = 0; i < 10; ++i) {
         userAnswers[i] = askQuestion(questions[i].text, questions[i].options, questions[i].correctAnswer);
         std::cout << std::endl;  // Add a blank line after each question to make it clearer
     }
 
-    // Show options for review
+    
     int option;
     while (true) {
         std::cout << "\nChoose an option:\n";
@@ -239,7 +239,7 @@ int main() {
         std::cout << "2. Print the result\n";
         std::cin >> option;
 
-        // Validate input for option
+       
         if (std::cin.fail() || (option != 1 && option != 2)) {
             std::cin.clear();
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -255,7 +255,7 @@ int main() {
                     std::cout << "Invalid question number.\n";
                 }
             } else if (option == 2) {
-                // 计算分数
+                
                 for (int i = 0; i < 10; ++i) {
                     if (userAnswers[i] == questions[i].correctAnswer) {
                         score++;
