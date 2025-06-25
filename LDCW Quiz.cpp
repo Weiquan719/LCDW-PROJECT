@@ -1,11 +1,11 @@
 #include <iostream>  
-#include <vector>    // For dynamic arrays (e.g., to store questions and answers)
-#include <string>    // For string manipulation
-#include <limits>    // For numeric_limits (to clear input buffer)
-#include <fstream>   // For file output
-#include <cctype>    // For isdigit and tolower
+#include <vector>   
+#include <string>  
+#include <limits>   
+#include <fstream>  
+#include <cctype>    
 
-// Structure to hold quiz question data
+
 struct Question {
     std::string text;
     std::vector<std::string> options;
@@ -306,4 +306,3 @@ int main() {
 
     return 0;
 }
-
