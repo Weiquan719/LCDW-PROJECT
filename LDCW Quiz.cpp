@@ -1,4 +1,4 @@
-#include <iostream>  // For input/output operations
+#include <iostream>  
 #include <vector>    // For dynamic arrays (e.g., to store questions and answers)
 #include <string>    // For string manipulation
 #include <limits>    // For numeric_limits (to clear input buffer)
@@ -255,7 +255,7 @@ int main() {
                     std::cout << "Invalid question number.\n";
                 }
             } else if (option == 2) {
-                // ¼ÆËã·ÖÊı
+                // è®¡ç®—åˆ†æ•°
                 for (int i = 0; i < 10; ++i) {
                     if (userAnswers[i] == questions[i].correctAnswer) {
                         score++;
@@ -273,12 +273,12 @@ int main() {
                 }
 
                 saveResultsToFile(name, studentId, questions, userAnswers, score);
-                break; // ÍË³ö option loop£¬½øÈëÏÂÒ»²½
+                break; // é€€å‡º option loopï¼Œè¿›å…¥ä¸‹ä¸€æ­¥
             }
         }
     }
 
-    // ? ×îºóÒ»²½£ºÎÊÓÃ»§ÊÇ·ñÒªÖØĞÂ¿ªÊ¼
+    // ? æœ€åä¸€æ­¥ï¼šé—®ç”¨æˆ·æ˜¯å¦è¦é‡æ–°å¼€å§‹
     while (true) {
         int finalChoice;
         std::cout << "\nWhat would you like to do next?\n";
@@ -295,7 +295,7 @@ int main() {
             if (finalChoice == 1) {
                 std::cout << "\nRestarting the quiz...\n\n";
                 std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-				main(); // ÖØĞÂÆô¶¯³ÌĞò
+				main(); // é‡æ–°å¯åŠ¨ç¨‹åº
                 return 0;
             } else if (finalChoice == 2) {
                 std::cout << "\nThank you for participating. Goodbye!\n";
