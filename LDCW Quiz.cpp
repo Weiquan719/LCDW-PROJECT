@@ -13,7 +13,7 @@ struct Question {
     std::string citation; 
 };
 
-// Function to validate student ID (10 digits, numeric)
+
 bool validateStudentId(const std::string& id) {
     if (id.length() != 10) {
         return false;
@@ -41,7 +41,7 @@ char askQuestion(const std::string& question, const std::vector<std::string>& op
     for (char optChar = 'a'; optChar < 'a' + options.size(); optChar++) {
         std::cout << optChar << ") " << options[optChar - 'a'] << std::endl;
     }
-    std::cout << std::endl; // Add an empty line after each question and options
+    std::cout << std::endl; 
 
     bool validInput = false;
     while (!validInput) {
@@ -60,7 +60,7 @@ char askQuestion(const std::string& question, const std::vector<std::string>& op
     return answer;
 }
 
-// Function to get the text for the user's chosen answer
+
 std::string getAnswerText(char answer, const std::vector<std::string>& options) {
     if (answer >= 'a' && answer < 'a' + options.size()) {
         return options[answer - 'a'];
@@ -68,12 +68,12 @@ std::string getAnswerText(char answer, const std::vector<std::string>& options) 
     return "";
 }
 
-// Function to save results to a text file
+
 void saveResultsToFile(const std::string& name, const std::string& studentId, const std::vector<Question>& questions,
                        const std::vector<char>& userAnswers, int score) {
-    // Use append mode to keep old results and add new ones
+    
     std::string filename = "result of quiz ldcw.txt";
-    std::ofstream outFile(filename.c_str(), std::ios::app);  // Open in append mode
+    std::ofstream outFile(filename.c_str(), std::ios::app);  
 
     if (!outFile.is_open()) {
         std::cerr << "Error: Could not open file " << filename << " for writing." << std::endl;
@@ -94,7 +94,7 @@ void saveResultsToFile(const std::string& name, const std::string& studentId, co
 
         outFile << "  Your Answer: " << getAnswerText(userAnswers[i], questions[i].options) << std::endl;
         outFile << "  Correct Answer: " << getAnswerText(questions[i].correctAnswer, questions[i].options) << std::endl;
-        outFile << std::endl; // Add space between questions for better readability
+        outFile << std::endl; 
     }
 
     outFile.close();
@@ -104,36 +104,36 @@ void saveResultsToFile(const std::string& name, const std::string& studentId, co
 int main() {
     std::string name;
     std::string studentId;
-    std::vector<char> userAnswers(10); // Store user answers
+    std::vector<char> userAnswers(10); 
     int score = 0;
 
     std::cout << "Welcome to the Smart Energy Knowledge Quiz!" << std::endl;
     std::cout << "This quiz will test your understanding of Smart Grids, Smart Cities, and Energy Efficiency." << std::endl;
-    std::cout << std::endl;  // Add a blank line for better readability
+    std::cout << std::endl;  
 
-    // Get user name and validate student ID
+    
     std::cout << "Please enter your name: ";
     std::getline(std::cin, name);
-    std::cout << std::endl;  // Add a blank line after name input
+    std::cout << std::endl;  
 
     bool validId = false;
     while (!validId) {
         std::cout << "Please enter your 10-digit student ID (e.g., 1211202337): ";
         std::cin >> studentId;
-        std::cin.ignore(10000, '\n'); // Clear buffer
+        std::cin.ignore(10000, '\n'); 
 
         if (validateStudentId(studentId)) {
             validId = true;
         } else {
             std::cout << "Invalid Student ID. It must be exactly 10 digits and contain only numbers." << std::endl;
         }
-        std::cout << std::endl;  // Add a blank line after ID input
+        std::cout << std::endl;  
     }
 
-    // Define the quiz questions and answers
+    
     std::vector<Question> questions;
     
-    // Initialize questions manually without list initialization
+   
     Question q1;
     q1.text = "1. What percentage of global greenhouse gas emissions do cities account for?";
     q1.options.push_back("A) Nearly 50%");
@@ -152,7 +152,7 @@ int main() {
     q2.correctAnswer = 'b';
     questions.push_back(q2);
 
-    // Add more questions manually
+    
     Question q3;
     q3.text = "3. How many key Smart Grid components in the intersection with Smart Cities are identified in the paper?";
     q3.options.push_back("A) 10");
@@ -273,7 +273,7 @@ int main() {
                 }
 
                 saveResultsToFile(name, studentId, questions, userAnswers, score);
-                break; // 退出 option loop，进入下一步
+                break; 
             }
         }
     }
@@ -294,7 +294,7 @@ int main() {
             if (finalChoice == 1) {
                 std::cout << "\nRestarting the quiz...\n\n";
                 std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-				main(); // 重新启动程序
+				main(); 
                 return 0;
             } else if (finalChoice == 2) {
                 std::cout << "\nThank you for participating. Goodbye!\n";
